@@ -3,10 +3,6 @@ import os
 import sys
 from pathlib import Path
 
-# Load environment variables first
-from dotenv import load_dotenv
-load_dotenv()
-
 # Add parent directory to path for imports
 sys.path.append(str(Path(__file__).parent.parent))
 
@@ -52,7 +48,7 @@ def init_services():
         return auth_service, chat_service, arxiv_service, rag_chain
     except Exception as e:
         st.error(f"Error initializing services: {str(e)}")
-        st.error("Please check your .env file and ensure all required API keys are set.")
+        st.error("Please check your Streamlit secrets and ensure all required API keys are set.")
         return None, None, None, None
 
 def main():

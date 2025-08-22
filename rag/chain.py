@@ -4,6 +4,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.messages import HumanMessage, SystemMessage
 import json
+import streamlit as st
 
 class RAGChain:
     def __init__(self, retriever):
@@ -12,7 +13,7 @@ class RAGChain:
         self.llm = ChatGoogleGenerativeAI(
             model="gemini-1.5-flash",
             temperature=0.1,
-            google_api_key=os.getenv("GOOGLE_API_KEY"),
+            google_api_key=st.secrets["GOOGLE_API_KEY"],
             convert_system_message_to_human=True
         )
         

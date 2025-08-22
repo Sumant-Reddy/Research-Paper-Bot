@@ -2,6 +2,7 @@ import os
 import weaviate
 from typing import List, Dict, Any
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
+import streamlit as st
 
 class RAGRetriever:
     def __init__(self):
@@ -9,16 +10,16 @@ class RAGRetriever:
         # Use Google AI embeddings (Gemini)
         self.embeddings = GoogleGenerativeAIEmbeddings(
             model="models/embedding-001",
-            google_api_key=os.getenv("GOOGLE_API_KEY")
+            google_api_key=st.secrets["GOOGLE_API_KEY"]
         )
         
-        # Initialize Weaviate client with v3 syntax
-        weaviate_url = os.getenv("WEAVIATE_URL")
-        weaviate_api_key = os.getenv("WEAVIATE_API_KEY")
-        google_api_key = os.getenv("GOOGLE_API_KEY")
+        # Initialize Weaviate client with v3 syntax using Streamlit secrets
+        weaviate_url = st.secrets["WEAVIATE_URL"]
+        weaviate_api_key = st.secrets["WEAVIATE_API_KEY"]
+        google_api_key = st.secrets["GOOGLE_API_KEY"]
         
         if not weaviate_url or not weaviate_api_key:
-            raise ValueError("Missing Weaviate configuration. Please check WEAVIATE_URL and WEAVIATE_API_KEY in your .env file.")
+            raise ValueError("Missing Weaviate configuration. Please check WEAVIATE_URL and WEAVIATE_API_KEY in your Streamlit secrets.")
         
         self.client = weaviate.Client(
             url=weaviate_url,
