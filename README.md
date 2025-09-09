@@ -1,7 +1,7 @@
 # 📚 Research Paper Chatbot
 
 A full-stack research paper chatbot using Retrieval-Augmented Generation (RAG) with persona-specific responses. Users can upload PDFs, search ArXiv, and get AI-powered answers grounded in their research papers.
-
+# Deployed Link : https://paper-chat.streamlit.app/
 ## 🚀 Features
 
 - **📄 PDF Upload & Processing**: Automatic text extraction, chunking, and embedding
