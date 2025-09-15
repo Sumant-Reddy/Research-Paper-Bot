@@ -14,7 +14,7 @@ class PDFIngester:
         """Initialize the PDF ingester with Google AI embeddings and Weaviate client"""
         # Use Google AI embeddings (Gemini)
         self.embeddings = GoogleGenerativeAIEmbeddings(
-            model="models/embedding-001",
+            model="models/gemini-embedding-001",
             google_api_key=st.secrets["GOOGLE_API_KEY"]
         )
         
