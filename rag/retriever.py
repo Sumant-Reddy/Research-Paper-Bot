@@ -9,7 +9,7 @@ class RAGRetriever:
         """Initialize the RAG retriever with Weaviate client and Google AI embeddings"""
         # Use Google AI embeddings (Gemini)
         self.embeddings = GoogleGenerativeAIEmbeddings(
-            model="models/embedding-001",
+            model="models/gemini-embedding-001",
             google_api_key=st.secrets["GOOGLE_API_KEY"]
         )
         
