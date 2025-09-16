@@ -10,7 +10,9 @@ class RAGRetriever:
         # Use Google AI embeddings (Gemini)
         self.embeddings = GoogleGenerativeAIEmbeddings(
             model="models/gemini-embedding-001",
-            google_api_key=st.secrets["GOOGLE_API_KEY"]
+            google_api_key=st.secrets["GOOGLE_API_KEY"],
+            task_type="retrieval_document",
+            dimension=768
         )
         
         # Initialize Weaviate client with v3 syntax using Streamlit secrets
