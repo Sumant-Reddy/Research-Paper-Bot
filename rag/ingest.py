@@ -46,9 +46,19 @@ class PDFIngester:
     
     def _create_schema(self):
         """Create the Weaviate schema for storing paper chunks"""
+        # First, try to delete existing schema if it exists
+        try:
+            self.client.schema.delete_class("PaperChunk")
+        except Exception as e:
+            print(f"Info: Schema deletion skipped: {e}")
+            
         schema = {
             "class": "PaperChunk",
             "description": "A chunk of text from a research paper",
+            "vectorIndexConfig": {
+                "distance": "cosine",
+                "dimension": 768
+            },
             "properties": [
                 {
                     "name": "content",
